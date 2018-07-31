@@ -1,0 +1,193 @@
+.mainContent {
+  width: 100%;
+}
+
+.eventClass {
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  margin: 10px auto;
+}
+
+form.search {
+  display: flex;
+  justify-content: space-between;
+}
+
+form.search input[type=text] {
+  padding: 10px;
+  font-size: 17px;
+  border: 1px solid grey;
+  float: left;
+  height: 40px;
+  background: #f1f1f1;
+  margin-top: 10px;
+  border-radius: 3px 0px 0px 3px;
+}
+
+form.search .searchBtn {
+  float: left;
+  height: 40px;
+  background: #124775;
+  color: white;
+  font-size: 17px;
+  border: 1px solid grey;
+  border-left: none;
+  margin-right: 5px;
+  margin-top: 10px;
+  border-radius: 0px 3px 3px 0px;
+}
+
+form.search::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+table {
+  border-collapse: collapse;
+  width: 90%;
+  margin: 10px auto;
+}
+
+th,
+td {
+  text-align: center;
+  padding: 6px;
+  vertical-align: middle;
+}
+
+th:nth-child(1), td:nth-child(1) {
+  text-align: left;
+}
+
+th {
+  background-color: lightskyblue;
+  color: #111;
+  height: 30px;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+td.fileName {
+  font-size: 1.2em;
+  max-width: 250px;
+}
+
+td.fileName .editFile a {
+  width: 200px;
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden !important;
+  text-overflow: ellipsis;
+  text-decoration: underline;
+}
+
+.ids {
+  width: 100px;
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden !important;
+  text-overflow: ellipsis;
+  cursor: pointer;
+  vertical-align: middle;
+}
+
+.deleteIcon {
+  color: rgb(255, 0, 55);
+  cursor: pointer;
+}
+
+.deleteText {
+  text-align: center;
+}
+
+.editFile {
+  color: blue;
+  cursor: pointer;
+}
+
+.downloadIcon {
+  color: #124775;
+}
+
+.retryIcon {
+  cursor: pointer;
+}
+
+input :hover {
+  background: #0b7dda;
+}
+
+form.search::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.refreshBtn {
+  align-self: center;
+  cursor: pointer;
+  font-size: 26px;
+  font-weight: bold;
+  border: none;
+  outline: none;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.refreshBtn:hover {
+  color: #062e4e;
+}
+
+.refreshBtn:active {
+  color: #124775;
+}
+
+.refreshIcon {
+  color: white;
+  background: #124775;
+}
+
+.btn-primary {
+  background: #124775;
+  border: none;
+}
+
+.btn-primary:hover {
+  background: #062e4e;
+}
+
+.downloadLink {
+  color: #124775;
+  cursor: pointer;
+}
+
+/* Media Queries */
+
+@media only screen and (min-width:1600px) and (max-width:1800px) {
+  td.fileName {
+    max-width: 250px;
+  }
+  td.fileName .editFile a {
+    width: 250px;
+  }
+}
+
+@media only screen and (min-width:1800px) {
+  td.fileName {
+    max-width: 350px;
+  }
+  td.fileName .editFile a {
+    width: 350px;
+  }
+}
+@media only screen and (max-width:809px) {
+  .refreshIcon {
+    margin-top: 22px !important;
+  }
+  .select-list {
+    margin: 30px 20px 10px -230px !important ;
+    padding:5px 20px 10px 20px;
+  }
+}

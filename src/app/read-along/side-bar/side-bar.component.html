@@ -1,0 +1,174 @@
+<div class="wrapper">
+  <ul class="iconList">
+    <li title="Search and Replace">
+      <span (click)="searchClicked()">
+        <i class="fas fa-search iconSymbol"></i>
+      </span>
+    </li>
+    <li title="Shortcuts">
+      <span (click)="iconsModal(shortcutsPopUp)">
+        <i class="fas fa-keyboard"></i>
+      </span>
+    </li>
+    <li title="Analysis Information" class="instructionsIcon">
+      <span class="icon" (click)="iconsModal(analysisPopUp)">
+        <strong>
+          <em>i</em>
+        </strong>
+      </span>
+    </li>
+    <li title="Save">
+      <span class="icon save" (click)="save()">
+        <i class="fa fa-save iconSymbol"></i>
+      </span>
+    </li>
+    <li title="Analytics">
+      <a target="_blank" [href]="link" (click)="analytics()">
+        <span class="icon">
+          <i class="fas fa-chart-line"></i>
+        </span>
+      </a>
+    </li>
+    <li title="Tags">
+      <span class="icon" placement="right" [ngbPopover]="tagsPopOver" #popover="ngbPopover">
+        <i class="fas fa-tags"></i>
+      </span>
+    </li>
+    <li title="Extra Notes">
+      <span class="icon" (click)="iconsModal(instructionsPopUp)">
+        <i class="fas fa-sticky-note"></i>
+      </span>
+    </li>
+  </ul>
+</div>
+<!--Modals-->
+<!-- Shortcuts Modal -->
+<ng-template #shortcutsPopUp>
+  <div class="modal-header">
+    <h4 class="modal-title">Shortcuts</h4>
+    <button type="button" class="close" aria-label="Close" (click)="close()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <table class="infoTable">
+      <tr>
+        <td>
+          Volume control
+        </td>
+        <td>ALT +
+          <i class="fas fa-arrow-up"></i>
+          and ALT +
+          <i class="fas fa-arrow-down"></i>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Forward and Rewind
+        </td>
+        <td>ALT +
+          <i class="fas fa-arrow-right"></i>
+          and ALT +
+          <i class="fas fa-arrow-left"></i>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Pause and Play
+        </td>
+        <td>ALT + P
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Save Transcript
+        </td>
+        <td>ALT + S
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-danger" (click)="close()">Close</button>
+  </div>
+</ng-template>
+
+<!-- Instructions Modal -->
+<ng-template #instructionsPopUp>
+  <div class="modal-header">
+    <h4 class="modal-title">Extra Notes</h4>
+    <button type="button" class="close" aria-label="Close" (click)="close()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>
+      {{instructions ? instructions : 'No notes available'}}
+    </p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-danger" (click)="close()">Close</button>
+  </div>
+</ng-template>
+
+<!-- Analysis Information Modal -->
+<ng-template #analysisPopUp>
+  <div class="modal-header">
+    <h4 class="modal-title">Analysis</h4>
+    <button type="button" class="close" aria-label="Close" (click)="close()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="analysisInfo">
+      <table class="infoTable">
+        <tr>
+          <td>
+            Low confidence words
+          </td>
+          <td>
+            {{ errorWordCount }}
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Total words
+          </td>
+          <td>
+            {{ totalWordCount }}
+          </td>
+        </tr>
+      </table>
+      <!-- <div class="chart" *ngIf="confidenceArray[wordLength] && durationArray[wordLength]">
+              <si-chart [confidenceArray]="confidenceArray" [durationArray]="durationArray"></si-chart>
+            </div> -->
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-danger" (click)="close()">Close</button>
+  </div>
+</ng-template>
+<!-- Tags Popover -->
+<ng-template #tagsPopOver class="tagsPopUp">
+  <div>
+    <div class="modal-body">
+      <div class="tags">
+        <h6>Tags</h6>
+        <div *ngIf="tagTypesAvailable">
+          <ul class="tagList">
+            <li *ngFor="let tag of tagTypes" class="tagItem">
+              <button class="btn btn-sm" [ngClass]="{'active': selectedTagType === tag.tagName}" (click)="selectType(tag)">{{tag.tagName}}&nbsp;({{tag.count}})</button>
+            </li>
+          </ul>
+        </div>
+        <div *ngIf="!tagTypesAvailable" class="noTags">
+          <em>No Tags available</em>
+        </div>
+      </div>
+    </div>
+    <div class="popBtn">
+      <button class="btn btn-sm btn-info" *ngIf="tagTypesAvailable" (click)="clearSelection()">Clear Selection</button> <!--To clear the tag selection-->
+      <button type="button" class="btn btn-sm btn-danger" (click)="openPopOver(popover)">Close</button> <!--To close the popover-->
+    </div>
+  </div>
+</ng-template>

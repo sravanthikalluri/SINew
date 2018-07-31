@@ -1,0 +1,74 @@
+.wrapper {
+  overflow: hidden;
+}
+
+.transcription {
+  display: flex;
+  justify-content: space-between;
+}
+
+.toggleWidth {
+  display: none;
+}
+
+.audio {
+    width: 90%;
+}
+
+
+.transcription-text {
+  flex: 7 1 65%;
+  height: calc(100vh - 100px);
+  overflow-y: scroll;
+}
+
+.speedText {
+  padding: 5px 10px;
+  color: #124775;
+  font-size: 1.1em;
+}
+
+button.speedBtn {
+  background: #124775;
+  cursor: pointer;
+  color: white;
+  width: 70px;
+}
+
+.audioPlayer .btnGroup div.dropdown-menu.show {
+  text-align: center;
+  min-width: 45px;
+}
+
+a.dropdown-item {
+    cursor: pointer;
+}
+
+a.dropdown-item:active {
+    background: #124775;
+    color: white;
+    min-width: 45px;
+}
+
+.btnGroup {
+  display: flex;
+  justify-content: center;
+}
+
+.audioPlayer {
+  width: 100%;
+  position: absolute;
+  margin-top: auto;
+  display: flex;
+  flex-direction: row;
+  padding: 5px 10px 0px 5px;
+}
+
+.audioPlayer audio {
+  padding: 0px;
+  margin: 0px;
+}
+
+/* .chart {
+    margin-top: 30px;
+} */

@@ -1,0 +1,156 @@
+.addFiles {
+  background: #ffffff;
+  display: flex;
+  justify-content: space-around;
+  padding: 20px;
+  margin-top: 10px;
+}
+
+.uploadInfo {
+  margin-top: 30px;
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  top: 55%;
+}
+
+h3 {
+  color: #4A4A4A;
+  font-size: 24px;
+  text-align: center;
+}
+
+.col-md-6, .col-lg-6 {
+  padding: 0px;
+}
+
+.col-lg-12, .col-md-12 {
+  padding: 0px;
+  margin: 0px; 
+}
+
+.title, .jobId {
+  padding-right: 10px;
+}
+
+.customerId, .orderId {
+  padding-left: 10px;
+}
+
+.has-error {
+  color: red;
+}
+
+.required {
+  color: red;
+  font-size: 1em;
+}
+
+.rightArrow {
+  display: flex;
+}
+
+.rightIcon {
+  align-self: center;
+  position: relative;
+  left: 15px;
+}
+
+.has-error input {
+  border-color: red;
+}
+
+.has-error ul {
+  list-style: none;
+  padding: 0px;
+}
+
+.has-error ul li {
+  padding-top: 10px;
+}
+
+.uploadFile {
+  border-color: #cdeaf2;
+  border-style: dashed;
+  width: 100%;
+  padding: 20px;
+}
+
+.myAlert {
+  text-align: center;
+  display: block;
+  margin: 10px auto;
+}
+
+.steps {
+  text-align: center;
+}
+
+.step2 {
+  margin-bottom: 15px;
+}
+
+.grayOut {
+  filter: grayscale(1);
+}
+
+.uploadFilesBtn {
+  margin: 0 30px 30px 30px;
+}
+
+.uploadInstructions {
+  text-align: center;
+  margin-bottom: 5px; 
+}
+
+.uploadInstructions a {
+  margin: 0px 10px 0px 10px;
+  color: #124775;
+  cursor: pointer;
+}
+
+.mp3 {
+  margin-left: 10px;
+}
+
+.text {
+  color: #4A4A4A;
+  font-size: 17px;
+  padding-top: 20px;
+  text-align: center;
+}
+
+.img {
+  display: block;
+  margin: 0 auto;
+  padding: 15px;
+  width: 150px;
+}
+
+.fileLabel label {
+  background: #124775;
+  color: white;
+  cursor: pointer;
+  display: block;
+  margin: 0 auto;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 20px;
+  text-align: center;
+}
+
+.isDisabled {
+  cursor: not-allowed !important;
+}
+
+.dateField {
+  margin-top: 5px;
+}
+
+/* Media Queries*/
+
+@media only screen and (max-width: 500px) {
+  .uploadFilesBtn {
+    margin: 0px;
+  }
+}

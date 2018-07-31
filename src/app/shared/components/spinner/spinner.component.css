@@ -1,0 +1,39 @@
+.spinner {
+    position: absolute;
+    text-align: center;
+    top: 48%;
+    left: 48%;
+    -webkit-animation: spin 1000ms linear infinite;
+    animation: spin 1000ms linear infinite;
+  }
+  
+  /* keyframes for animation */
+  
+  @-webkit-keyframes spin {
+    0% {
+      -webkit-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+    100% {
+      -webkit-transform: rotate(359deg);
+      transform: rotate(359deg);
+    }
+  }
+  
+  @keyframes spin {
+    0% {
+      -webkit-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+    100% {
+      -webkit-transform: rotate(359deg);
+      transform: rotate(359deg);
+    }
+  }
+
+  @media only screen and (min-width: 1500px)  and (max-width:2000px) {
+    .spinner {
+      left: 48.5%;
+    }
+    
+  }

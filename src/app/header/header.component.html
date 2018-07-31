@@ -1,0 +1,35 @@
+<div class="myNavbar">
+  <div class="headerWrap">
+    <img src="./assets/images/Logo_Final.jpg" class="imgLogo">
+    <sup class="environment">{{envName}}</sup>
+  </div>
+  <div class="mainHeader">
+    <h4>
+      <a class="fileName" [ngbPopover]="curFileName" placement="bottom" triggers="mouseenter:mouseleave" *ngIf="inTranscription">{{fileName}}</a> <!--display filename in the transcription/edit page only-->
+    </h4>
+    <h3 [ngClass]="{'myBuffer': ((inNotFound || !inTranscription)), 'loginBuffer':inLoginPage }">{{title}}</h3> 
+  </div>
+  <div class="headerRight">
+    <div *ngIf="!inLoginPage && authService.isAuthenticated()" class="myDropdown">
+      <a class="dropbtn">{{formatUsername()}}</a>
+      <div class="dropdownItems">
+        <a (click)="logout()">Logout</a>
+      </div>
+    </div>
+    <div class="uploadFilesBtn" *ngIf="(!(authService.getRole() ==='Editor') && authService.isAuthenticated()) && (!inLoginPage && !inNotFound && !inHomePage)"
+      (click)="submit('/home')" title="Dashboard">
+      <i class="fas fa-table"></i> <!--Home icon should only be displayed in upload, edit/transcription -->
+    </div>
+    <div class="uploadFilesBtn" *ngIf="(!(authService.getRole() ==='Editor') && authService.isAuthenticated()) && (!inLoginPage && !inNotFound && !inUploadPage)"
+      (click)="submit('/upload')" title="Upload files">
+      <i class="fas fa-upload"></i> <!--Upload should only be displayed in home or edit pages-->
+    </div>
+    <div class="uploadFilesBtn" *ngIf="(!(authService.getRole() ==='Editor') && authService.isAuthenticated()) && (!inLoginPage && !inNotFound && inTranscription)"
+    title="Download Transcript">
+    <a [href]="downloadLink" target="_blank" title="Download Transcript" class="download">
+      <i class="fas fa-download"></i>
+    </a>
+  </div>
+  </div>
+</div>
+<ng-template #curFileName>{{fileName}}</ng-template> <!--To display filename in the popover if the file name is very long to display-->

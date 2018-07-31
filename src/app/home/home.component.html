@@ -1,0 +1,125 @@
+<si-spinner *ngIf="loading"></si-spinner>
+<!--spinner omponent for loading-->
+<div *ngIf="!loading" class="mainContent">
+  <div class="eventClass">
+    <!--Input field for searching files-->
+    <form class="search">
+      <input type="text" placeholder="Search.." [(ngModel)]="searchText" name="searchText">
+      <button type="submit" class="searchBtn">
+        <i class="fa fa-search"></i>
+      </button>
+      <!--radio buttons to select file types-->
+      <app-selectlist [all]="getAllFilesCount()" [processing]="getProcessingFilesCount()" [completed]="getCompletedFilesCount()"
+        (countRadioButtonSelectionChanges)="onSelectListCount($event)" class="select-list"></app-selectlist>
+    </form>
+    <div *ngIf="successValue" class="alert alert-success alert-dismissible col-md-4 myAlert">
+      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+      <strong>{{statusMessage}}</strong>
+    </div>
+    <div *ngIf="failureValue" class="alert alert-warning alert-dismissible col-md-4 myAlert">
+      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+      <strong>{{statusMessage}}</strong>
+    </div>
+    <div class="refreshBtn" title="refresh" (click)="getFileInfo()">
+      <!--To refresh the files-->
+      <button class="btn btn-sm refreshIcon">
+        <span>
+           <i class="fas fa-sync"></i>
+        </span>
+        <span>
+          &nbsp;Refresh
+        </span>
+      </button>
+    </div>
+  </div>
+  <table class="table table-hover table-striped">
+    <!--Table to display files information-->
+    <thead>
+      <th>Name</th>
+      <th>Size</th>
+      <th>Duration</th>
+      <th>Status</th>
+      <th>Job Id</th>
+      <th>Customer Id</th>
+      <th>Uploaded Date (PST)</th>
+      <th>Copy Link</th>
+      <th>Download</th>
+      <th>Retry</th>
+      <th>Delete</th>
+    </thead>
+    <tbody class="fileList">
+      <ng-container *ngFor="let file of filesInfo | filter: searchText; trackBy: trackByData; let i = index">
+        <tr *ngIf="selectedListCount==='All' || selectedListCount==file.Status">
+          <td class="fileName">
+            <span [title]="file.FileName" class="editFile" *ngIf="!(authService.getRole() ==='Editor')">
+              <!--Allowing access to edit page only it is NOT editor-->
+              <a (click)="editFile(file.Guid, file.FileName, file.Status, i)">{{file.FileName}}</a>
+            </span>
+            <span [title]="file.FileName" *ngIf="(authService.getRole() ==='Editor')">
+              <!--Only displaying name for the editor, if editor tries to access the page.-->
+              {{file.FileName}}
+            </span>
+          </td>
+          <td>{{file.Size | number : '1.2-2'}}&nbsp;MB</td>
+          <td>{{dataService.formatTime(file.Duration)}}</td>
+          <td>{{file.Status}}</td>
+          <td>
+            <span class="ids" [title]="file.JobId">{{file.JobId}}</span>
+          </td>
+          <td>
+            <span class="ids" [title]="file.CustomerId">{{file.CustomerId}}</span>
+          </td>
+          <td>{{uploadedTimeArray[i]}}</td>
+          <td class="editLink">
+            <ng-template #popContent>
+              <b>Link Copied</b>!</ng-template>
+            <!--To display popover that link is copied-->
+            <button *ngIf="(file.Status === 'Completed')" type="button" class="btn btn-sm btn-primary" [ngbPopover]="popContent" #popover="ngbPopover"
+              (click)="copyToClipboard(file.Guid, file.FileName, popover, i)">
+              <span>
+                <i class="fas fa-link"></i>
+              </span>
+              <span>Copy Link</span>
+            </button>
+          </td>
+          <td class="downloadIcon">
+            <a *ngIf="(file.Status === 'Completed')" target="_blank" title="Download Transcript" class="downloadLink" [href]="dataService.downloadLinks[i]">
+              <i class="fas fa-2x fa-download"></i>
+            </a>
+          </td>
+          <td>
+            <span *ngIf="!(file.Status === 'Completed')" class="retryIcon" (click)="retryFile(file.WatsonJobId)">
+              <i class="fas fa-redo"></i>
+            </span>
+          </td>
+          <td>
+            <span class="deleteIcon" (click)="onClickDeleteFile(file.Guid, file.FileName, deletePopUp)">
+              <!--<i class="fas fa-times-circle"></i>-->
+              <i class="fas fa-trash"></i>
+            </span>
+          </td>
+        </tr>
+      </ng-container>
+    </tbody>
+  </table>
+</div>
+
+<!-- Remove tag The Modal -->
+<ng-template #deletePopUp>
+  <div class="modal-header">
+    <h4 class="modal-title">Delete File {{curfileToDelete}}?</h4>
+    <button type="button" class="close" aria-label="Close" (click)="close()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p class="deleteText">Are you sure to delete this file?</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-warning" (click)="deleteFile()">Yes</button>
+    <button type="button" class="btn btn-danger" (click)="close()">Close</button>
+  </div>
+</ng-template>
+
+<!-- | paginate: { itemsPerPage: 10, currentPage: p } -->
+<!-- <pagination-controls (pageChange)="p = $event"></pagination-controls> -->

@@ -1,0 +1,140 @@
+.wrapper {
+  padding: 20px;
+}
+
+.transcriptWrapper {
+  z-index: -10;
+}
+
+.moveDown {
+  margin-top: 60px;
+}
+
+.speakerTranscript {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 15px;
+}
+
+.transcript {
+  flex: 5 5 70%;
+  line-height: 1.7em;
+  position: relative;
+  top: -6px;
+}
+
+.wordTranscript {
+  flex: 5 5 70%;
+  line-height: 1.6em;
+  position: relative;
+  top: -6px;
+}
+
+.transcriptDetails {
+  color: #124775;
+  flex: 1 1 10%;
+  text-align: center;
+  vertical-align: top;
+  height: 25px;
+  width: 10%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.inputText {
+  border-radius: 3px 0px 0px 3px;
+}
+
+.searchInput {
+  background: url('../../assets/images/magnifying-glass.png');
+  background-repeat: no-repeat;
+  background-position-x: right;
+  background-position-y: center;
+  width: 200px;
+  height: 40px;
+}
+
+.replaceBtnsGroup {
+  height: 40px;
+  display: flex;
+  flex-direction: column;
+}
+
+.replaceBtn {
+  background: #0E4473;
+  color: white;
+  cursor: pointer;
+  border: 1px solid black;
+  outline: none;
+  height: 20px;
+  font-size: 0.8em;
+  width: 90px;
+}
+
+.topBorder {
+  border-radius: 0px 3px 0px 0px;
+  border-bottom: 1px solid white;
+}
+
+.bottomBorder {
+  border-radius: 0px 0px 3px 0px;
+  border-bottom: none;
+}
+
+.saveBtn:hover, .searchTranscript button:hover,
+.replaceBtn:hover {
+  background: #062e4e;
+}
+
+.saveBtn:active, .searchTranscript button:active,
+.replaceBtn:active {
+  background: #124775;
+}
+
+.searchTranscript {
+  display: flex;
+  justify-content: center;
+}
+
+.searchTranscript .replaceText {
+  height: 40px;
+  width: 150px;
+  padding: 5px;
+}
+
+.searchTranscript .searchIcon {
+  height: 40px;
+  width: 20px;
+  background: #0E4473;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+.transcriptOptions {
+  display: flex;
+  padding: 15px;
+  background: white;
+  position: absolute;
+  margin-top: -18px;
+  width: 56%;
+  z-index: 10;
+}
+
+.replaceInput {
+  margin-left: 20px;
+}
+
+.saveTranscript {
+  margin-left: auto;
+}
+
+/* Media Queries*/
+
+@media only screen and (max-width: 750px) {
+  .transcript {
+    flex: 5 5 100%;
+    line-height: 1.7em;
+    padding-top: 20px;
+  }
+}

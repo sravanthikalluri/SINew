@@ -1,0 +1,86 @@
+.wrapper {
+    height: 80vh;
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+}
+
+.myForm {
+    align-self: center;
+}
+.imgLogo{
+    height: 150px;
+    width: 150px;
+    display: block;
+    margin: 0 auto;
+    padding-top: 40px;
+}
+.myLoginForm {
+    padding: 20px;
+}
+
+h2 {
+    background: #4f6174;
+    margin: 0px;
+    text-align: center;
+    color: white;
+    padding: 10px;
+}
+
+.formFields {
+    margin: 10px;
+    font-size: 1.2em;
+}
+
+.inputFields {
+    margin: 10px 10px 10px 0;
+    padding: 10px;
+    font-size: 1.05em;
+    border-radius: 5px;
+    border-color: rgb(153, 153, 167);
+}
+
+.has-error {
+    border-color: red;
+    color: red;
+}
+
+.buttons {
+  text-align: center
+}
+
+.loginBtn {
+  background: cornflowerblue;
+}
+
+.registerBtn {
+  background: darkcyan;
+}
+
+.validationMessage {
+    padding-top: 10px;
+    color: red;
+}
+
+.options {
+    text-align: center;
+    margin: 10px;
+}
+
+.buttons button {
+    padding: 15px;
+    margin: 10px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 1.1em;
+}
+
+button:disabled {
+    cursor: not-allowed;
+}
+
+button:not(:disabled) {
+    cursor: pointer;
+}

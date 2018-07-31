@@ -1,0 +1,22 @@
+<si-spinner *ngIf="loading"></si-spinner>
+<div class="wrapper">
+  <div class="transcription" (window:keydown)="handleKeyboardEvent($event)" (window:keyup)="handleKeyboardEvent($event)">
+    <si-side-bar [instructions]="instructions" [errorWordCount]="errorWordCount" [wordTags]="wordTags" [totalWordCount]="totalWordCount"
+      (onSearchClick)="searchClicked($event)" (onTagSelect)="tagSelected($event)"></si-side-bar> <!--Side bar component which has icons-->
+    <si-transcription-text class="transcription-text" [selectedTagType]="selectedTagType" [searchClick]="searchClick" [transcription]="transcription"></si-transcription-text>
+  </div> <!--Component wich contains speaker labels, time and actual transcription-->
+  <div class="audioPlayer"> <!--Audio and speed control-->
+    <audio controls id="track" #track [src]="audioSource" type="audio/mp3" class="audio"></audio>
+    <div class="btnGroup">
+      <span class="speedText">Speed:</span>
+      <div class="dropup menuItems speedControl"> <!--Drop up to select speed-->
+        <button type="button" class="btn dropdown-toggle speedBtn" data-toggle="dropdown">
+          {{selectedSpeed}}X
+        </button>
+        <div class="dropdown-menu">
+          <a *ngFor="let speed of speedArray" class="dropdown-item" (click)="speedChanger(speed)">{{speed}}X</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

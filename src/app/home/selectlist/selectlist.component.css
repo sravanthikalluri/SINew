@@ -1,0 +1,10 @@
+.radioBtn{
+    display: inline;
+    margin-left: 15%;
+    position: relative;
+    top: 20px;
+}
+
+/* .radioBtn span {
+    margin-bottom: 15px;
+} */

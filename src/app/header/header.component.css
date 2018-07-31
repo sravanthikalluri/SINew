@@ -1,0 +1,180 @@
+.myNavbar {
+  overflow: hidden;
+  /*  background-color: #778899;*/
+  height: 48px;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  color: #000000;
+  box-shadow: 2px 2px 2px rgb(187, 187, 187);
+  -webkit-box-shadow: 2px 2px 2px rgb(187, 187, 187);
+}
+
+.environment {
+  font-weight: bold;
+  position: relative;
+  left: -10px;
+}
+
+.headerWrap {
+  width: 10%;
+}
+
+.headerWrap .imgLogo {
+  max-height: 40px;
+  margin-top: 4px;
+}
+
+.mainHeader {
+  width: 50%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 4px;
+}
+
+.mainHeader h3 {
+  align-self: center;
+}
+
+h4 {
+  display: inline-block;
+  overflow: hidden !important;
+  width: 90%;
+  align-self: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 0.95em;
+}
+
+h4 a.fileName {
+  cursor: pointer;
+}
+
+.headerRight {
+  width: 55%;
+  display: flex;
+  flex-direction: row-reverse;
+  align-content: flex-end;
+  margin-right: 30px;
+}
+
+.uploadFilesBtn {
+  color: #124775;
+  cursor: pointer;
+  font-size: 28px;
+  align-self: center;
+  padding: 0px 20px;
+}
+
+.uploadFilesBtn:hover {
+  color: #062e4e;
+}
+
+.uploadFilesBtn:active {
+  color: #124775;
+}
+
+/* Dropdown styles */
+
+.myDropdown {
+  padding-left: 16px;
+}
+
+.dropbtn {
+  height: 30px;
+  width: 30px;
+  font-size: 20px;
+  text-align: center;
+  border-radius: 50%;
+  background: #124775;
+  color: white;
+}
+
+.myDropdown > a.dropbtn {
+  color: white;
+}
+
+.myDropdown a:hover,
+.myDropdown:hover .dropbtn {
+  cursor: pointer;
+  background-color: #062e4e;
+}
+
+.myDropdown {
+  display: flex;
+  align-self: center;
+}
+
+.dropdownItems {
+  display: none;
+  position: absolute;
+  top: 38px;
+  right: 10px;
+  cursor: pointer;
+  background-color: #f9f9f9;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.myBuffer {
+  position: relative;
+  left: 12%;
+  white-space: nowrap;
+}
+
+.loginBuffer {
+  position: relative;
+  left: 14%;
+  white-space: nowrap;
+}
+
+.dropdownItems a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdownItems a:hover {
+  background-color: #f1f1f1
+}
+
+.myDropdown:hover .dropdownItems {
+  display: block;
+}
+
+.download {
+  color: #124775;
+}
+
+/* Media Queries */
+
+@media only screen and (min-width: 1500px) and (max-width:1700px) {
+  .myBuffer {
+    position: relative;
+    left: 5%;
+    white-space: nowrap;
+  }
+  
+  .loginBuffer {
+    position: relative;
+    left: 10%;
+    white-space: nowrap;
+  }
+}
+
+@media only screen and (min-width: 1700px) and (max-width:2000px) {
+  .myBuffer {
+    position: relative;
+    left: 3%;
+    white-space: nowrap;
+  }
+  
+  .loginBuffer {
+    position: relative;
+    left: 8%;
+    white-space: nowrap;
+  }
+}
